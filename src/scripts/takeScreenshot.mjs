@@ -6,7 +6,10 @@ const __dirname = resolve();
 
 const imagePath = join(__dirname, './images', 'readme-index-image.png')
 
+console.log(imagePath)
+
 if (fs.existsSync(imagePath)) {
+  console.log('file exists')
   fs.unlinkSync(imagePath)
 }
 
