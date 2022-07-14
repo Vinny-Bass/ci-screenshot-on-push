@@ -30,3 +30,18 @@ jobs:
 
       - name: Take screenshot
         run: npm run take-index-screenshot
+
+      - name: Switching from HTTPS to SSH
+        run: git remote set-url origin ${{ secrets.SSH_TOKEN }}
+
+      - name: Check for changes
+        run: git status
+
+      - name: Stage changed files
+        run: git add .
+
+      - name: Commit changed files
+        run: git commit -m "Auto updating Readme Image"
+
+      - name: Push code to master
+        run: git push
