@@ -16,13 +16,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start server
-        run: npm start
-
-  take-screenshot:
+  deploy:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
       - uses: actions/checkout@v2
-      - name: Take screenshot
-        run: npm run take-index-screenshot
+      - uses: akhileshns/heroku-deploy@v3.12.12 
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "screenshot-pipeline"
+          heroku_email: "vinicius.bass@outlook.com"
+
+  # take-screenshot:
+  #   runs-on: ubuntu-latest
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Take screenshot
+  #       run: npm run take-index-screenshot
