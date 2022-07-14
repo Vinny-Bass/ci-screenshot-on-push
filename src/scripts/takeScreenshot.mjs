@@ -10,6 +10,6 @@ if (fs.existsSync(imagePath)) {
   fs.unlinkSync(imagePath)
 }
 
-await captureWebsite.file('http://localhost:3000', imagePath);
+await captureWebsite.file('https://screenshot-pipeline.herokuapp.com/', imagePath);
 
 
